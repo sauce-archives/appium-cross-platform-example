@@ -1,3 +1,4 @@
+import data.User;
 import org.junit.Test;
 import org.testobject.appium.common.TestObject;
 
@@ -8,6 +9,8 @@ public class SignUpTest extends AbstractTest {
 
     @Test
     public void signUpTest() {
-        assertTrue(true);
+        app.landingScreen().selectSignUp();
+        app.signUpScreen().signUpUser(User.VALID_USER);
+        assertTrue(app.welcomeScreen().welcomeMessagePresent(User.VALID_USER));
     }
 }
