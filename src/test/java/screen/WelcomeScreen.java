@@ -20,11 +20,10 @@ public class WelcomeScreen extends AbstractScreen {
 
     public boolean welcomeMessagePresent(User user) {
         String expectedWelcomeText = user.name + welcomeTextSuffix;
-        expectedWelcomeText = expectedWelcomeText.toUpperCase();
         String welcomeText = welcomeTitle.getText();
 
         takeScreenshot();
 
-        return expectedWelcomeText.equals(welcomeText.toUpperCase());
+        return expectedWelcomeText.equalsIgnoreCase(welcomeText);
     }
 }
