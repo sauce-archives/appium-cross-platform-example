@@ -37,6 +37,5 @@ public class SignUpScreen extends AbstractScreen {
         takeScreenshot();
 
         submitSignUpButton.click();
-        takeScreenshot();
     }
 }

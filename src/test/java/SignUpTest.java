@@ -7,7 +7,7 @@ import org.testobject.rest.api.appium.common.TestObject;
 import static org.junit.Assert.*;
 
 @RunWith(TestObjectAppiumSuite.class)
-@TestObject(testLocally = false)
+@TestObject(testLocally = false, testObjectSuiteId = 7)
 public class SignUpTest extends AbstractTest {
 
     @Test
