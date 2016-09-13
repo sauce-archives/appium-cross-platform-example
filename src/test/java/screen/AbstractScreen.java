@@ -1,7 +1,11 @@
 package screen;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
+import io.appium.java_client.remote.HideKeyboardStrategy;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.PageFactory;
 
 import java.util.concurrent.TimeUnit;
@@ -13,5 +17,22 @@ public class AbstractScreen {
         this.driver = driver;
 
         PageFactory.initElements(new AppiumFieldDecorator(driver, 15, TimeUnit.SECONDS), this);
+    }
+
+    public void hideKeyboard() {
+        if (isAndroid()) {
+            driver.hideKeyboard();
+        } else {
+            IOSDriver iosDriver = (IOSDriver) driver;
+            iosDriver.hideKeyboard(HideKeyboardStrategy.PRESS_KEY, "Done");
+        }
+    }
+
+    public boolean isAndroid() {
+        return driver instanceof AndroidDriver;
+    }
+
+    public void takeScreenshot() {
+        driver.getScreenshotAs(OutputType.BASE64);
     }
 }

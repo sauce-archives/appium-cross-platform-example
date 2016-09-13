@@ -26,6 +26,7 @@ public class AppiumDriverBuilder {
         String platform = System.getenv("PLATFORM");
 
         if (platform.toLowerCase().equals("ios")) {
+            capabilities.setCapability("autoDismissAlerts", true);
             return new IOSDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);
         } else if (platform.toLowerCase().equals("android")) {
             return new AndroidDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);

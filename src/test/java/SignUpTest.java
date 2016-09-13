@@ -1,10 +1,13 @@
 import data.User;
 import org.junit.Test;
-import org.testobject.appium.common.TestObject;
+import org.junit.runner.RunWith;
+import org.testobject.appium.junit.TestObjectAppiumSuite;
+import org.testobject.rest.api.appium.common.TestObject;
 
 import static org.junit.Assert.*;
 
-@TestObject(testLocally = true)
+@RunWith(TestObjectAppiumSuite.class)
+@TestObject(testLocally = false)
 public class SignUpTest extends AbstractTest {
 
     @Test
