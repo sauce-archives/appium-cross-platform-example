@@ -4,9 +4,6 @@ import org.junit.Rule;
 import org.testobject.appium.junit.TestObjectTestResultWatcher;
 import utility.AppiumDriverBuilder;
 
-
-import java.net.MalformedURLException;
-
 public class AbstractTest {
 
     @Rule

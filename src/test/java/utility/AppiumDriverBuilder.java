@@ -25,10 +25,10 @@ public class AppiumDriverBuilder {
 
         String platform = System.getenv("PLATFORM");
 
-        if (platform.toLowerCase().equals("ios")) {
+        if (platform.equalsIgnoreCase("ios")) {
             capabilities.setCapability("autoDismissAlerts", true);
             return new IOSDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);
-        } else if (platform.toLowerCase().equals("android")) {
+        } else if (platform.equalsIgnoreCase("android")) {
             return new AndroidDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);
         } else {
             throw new Exception("Unable to read device platform.");
