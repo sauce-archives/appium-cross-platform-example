@@ -24,6 +24,8 @@ public class SignUpScreen extends AbstractScreen {
     @AndroidFindBy(id = "button_register")
     MobileElement submitSignUpButton;
 
+    String expectedWrongEmailText = "Please Enter Correct Email";
+
     public SignUpScreen(AppiumDriver driver) {
         super(driver);
     }
@@ -36,5 +38,13 @@ public class SignUpScreen extends AbstractScreen {
         takeScreenshot();
 
         submitSignUpButton.click();
+    }
+
+    public boolean wrongEmailAlertPresent() {
+        String wrongEmailText = driver.switchTo().alert().getText();
+
+        takeScreenshot();
+
+        return wrongEmailText.contains(expectedWrongEmailText);
     }
 }

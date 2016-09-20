@@ -16,6 +16,9 @@ public class LandingScreen extends AbstractScreen {
     }
 
     public void selectSignUp() {
+        //dismiss an alert
+        driver.switchTo().alert().dismiss();
+
         signUpButton.click();
     }
 }
