@@ -16,8 +16,9 @@ public class LandingScreen extends AbstractScreen {
     }
 
     public void selectSignUp() {
-        //dismiss an alert
-        driver.switchTo().alert().dismiss();
+        // Dismiss an alert that appears on iOS only
+        if (isIOS())
+            driver.switchTo().alert().dismiss();
 
         signUpButton.click();
     }

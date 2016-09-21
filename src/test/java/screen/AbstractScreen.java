@@ -5,6 +5,7 @@ import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.remote.HideKeyboardStrategy;
+import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.PageFactory;
 
@@ -32,7 +33,19 @@ public class AbstractScreen {
         return driver instanceof AndroidDriver;
     }
 
+    public boolean isIOS() {
+        return driver instanceof IOSDriver;
+    }
+
     public void takeScreenshot() {
         driver.getScreenshotAs(OutputType.BASE64);
+    }
+
+    public String getAlertTitle() {
+        if (isIOS()) {
+            return driver.findElement(By.xpath("//UIAAlert/UIAScrollView/UIAStaticText[1]")).getText();
+        } else {
+            return driver.findElement(By.id("android:id/alertTitle")).getText();
+        }
     }
 }
