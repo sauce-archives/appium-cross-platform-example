@@ -1,11 +1,15 @@
 import io.appium.java_client.AppiumDriver;
 import org.junit.Before;
 import org.junit.Rule;
+import org.junit.rules.TestName;
 import org.testobject.appium.junit.TestObjectTestResultWatcher;
 import utility.AppiumDriverBuilder;
 
 public class AbstractTest {
 
+    @Rule
+    public TestName testName = new TestName();
+    
     @Rule
     public TestObjectTestResultWatcher resultWatcher = new TestObjectTestResultWatcher();
 
