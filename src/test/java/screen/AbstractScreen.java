@@ -12,21 +12,25 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.concurrent.TimeUnit;
 
 public class AbstractScreen {
+
     protected final AppiumDriver driver;
 
     public AbstractScreen(AppiumDriver driver) {
-        this.driver = driver;
 
+        this.driver = driver;
         PageFactory.initElements(new AppiumFieldDecorator(driver, 15, TimeUnit.SECONDS), this);
+
     }
 
     public void hideKeyboard() {
+
         if (isAndroid()) {
             driver.hideKeyboard();
         } else {
             IOSDriver iosDriver = (IOSDriver) driver;
             iosDriver.hideKeyboard(HideKeyboardStrategy.PRESS_KEY, "Done");
         }
+
     }
 
     public boolean isAndroid() {
@@ -42,10 +46,12 @@ public class AbstractScreen {
     }
 
     public String getAlertTitle() {
+
         if (isIOS()) {
             return driver.findElement(By.xpath("//UIAAlert/UIAScrollView/UIAStaticText[1]")).getText();
         } else {
             return driver.findElement(By.id("android:id/alertTitle")).getText();
         }
+
     }
 }

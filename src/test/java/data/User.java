@@ -1,8 +1,9 @@
 package data;
 
 public enum User {
+
     INVALID_USER(
-            "Chris",
+            "user",
             "invalid.email",
             "securepassword"
     );
@@ -11,10 +12,10 @@ public enum User {
     public String email;
     public String password;
 
-
     User(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
     }
+
 }

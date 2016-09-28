@@ -3,6 +3,7 @@ import screen.LandingScreen;
 import screen.SignUpScreen;
 
 public class Komoot {
+
     private AppiumDriver driver;
 
     public Komoot(AppiumDriver driver) {
@@ -16,4 +17,5 @@ public class Komoot {
     public SignUpScreen signUpScreen() {
         return new SignUpScreen(driver);
     }
+
 }

@@ -7,6 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testobject.appium.junit.TestObjectTestResultWatcher;
 
 public class AppiumDriverBuilder {
+
     private TestObjectTestResultWatcher resultWatcher;
 
     public AppiumDriverBuilder withTestResultWatcher(TestObjectTestResultWatcher resultWatcher) {
@@ -33,4 +34,5 @@ public class AppiumDriverBuilder {
             throw new Exception("Unable to read device platform.");
         }
     }
+
 }

@@ -18,6 +18,7 @@ public class AbstractTest {
 
     @Before
     public void connect() throws Exception {
+
         this.driver = new AppiumDriverBuilder()
                 .withTestResultWatcher(resultWatcher)
                 .build();
@@ -25,6 +26,7 @@ public class AbstractTest {
         resultWatcher.setAppiumDriver(driver);
 
         app = new Komoot(driver);
+
     }
 
 }
