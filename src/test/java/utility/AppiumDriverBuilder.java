@@ -7,6 +7,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testobject.appium.junit.TestObjectTestResultWatcher;
 
 public class AppiumDriverBuilder {
+
     private TestObjectTestResultWatcher resultWatcher;
 
     public AppiumDriverBuilder withTestResultWatcher(TestObjectTestResultWatcher resultWatcher) {
@@ -26,7 +27,6 @@ public class AppiumDriverBuilder {
         String platform = System.getenv("PLATFORM");
 
         if (platform.equalsIgnoreCase("ios")) {
-            capabilities.setCapability("autoDismissAlerts", true);
             return new IOSDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);
         } else if (platform.equalsIgnoreCase("android")) {
             return new AndroidDriver(resultWatcher.getTestObjectOrLocalAppiumEndpointURL(), capabilities);
@@ -34,4 +34,5 @@ public class AppiumDriverBuilder {
             throw new Exception("Unable to read device platform.");
         }
     }
+
 }

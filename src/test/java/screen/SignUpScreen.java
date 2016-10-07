@@ -10,31 +10,46 @@ public class SignUpScreen extends AbstractScreen {
 
     @iOSFindBy(xpath = "//UIAStaticText[@value = 'Name:']/../UIATextField")
     @AndroidFindBy(id = "edittext_display_name")
-    MobileElement nameField;
+    private MobileElement nameField;
 
     @iOSFindBy(xpath = "//UIAStaticText[@value = 'Email:']/../UIATextField")
     @AndroidFindBy(id = "edittext_email")
-    MobileElement emailField;
+    private MobileElement emailField;
 
     @iOSFindBy(xpath = "//UIAStaticText[@value = 'Password:']/../UIASecureTextField")
     @AndroidFindBy(id = "edittext_password")
-    MobileElement passwordField;
+    private MobileElement passwordField;
 
     @iOSFindBy(xpath = "//UIAButton[@label = 'Sign Up']")
     @AndroidFindBy(id = "button_register")
-    MobileElement submitSignUpButton;
+    private MobileElement submitSignUpButton;
+
+    private final String expectedWrongEmailText = "Please Enter Correct Email";
 
     public SignUpScreen(AppiumDriver driver) {
         super(driver);
     }
 
     public void signUpUser(User user) {
+
         nameField.sendKeys(user.name);
         emailField.sendKeys(user.email);
         passwordField.sendKeys(user.password);
         hideKeyboard();
+
         takeScreenshot();
 
         submitSignUpButton.click();
+
+    }
+
+    public boolean wrongEmailAlertPresent() {
+
+        String wrongEmailText = getAlertTitle();
+
+        takeScreenshot();
+
+        return wrongEmailText.contains(expectedWrongEmailText);
+
     }
 }
