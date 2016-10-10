@@ -17,5 +17,4 @@ public class SignUpTest extends AbstractTest {
 
         assertTrue(app.signUpScreen().wrongEmailAlertPresent());
     }
-
 }
