@@ -1,3 +1,4 @@
+import data.Device;
 import io.appium.java_client.AppiumDriver;
 import org.junit.Before;
 import org.junit.Rule;
@@ -19,14 +20,12 @@ public class AbstractTest {
     @Before
     public void connect() throws Exception {
 
-        this.driver = new AppiumDriverBuilder()
-                .withTestResultWatcher(resultWatcher)
-                .build();
+        Device device = new Device();
+        this.driver = new AppiumDriverBuilder().build(device, resultWatcher);
 
         resultWatcher.setAppiumDriver(driver);
 
         app = new Komoot(driver);
-
     }
 
 }
