@@ -26,6 +26,8 @@ public class SignUpScreen extends AbstractScreen {
 
     private final String expectedWrongEmailText = "Please Enter Correct Email";
 
+    private final String expectedWrongPasswordText = "Please Enter Your Full Password";
+
     public SignUpScreen(AppiumDriver driver) {
         super(driver);
     }
@@ -40,7 +42,6 @@ public class SignUpScreen extends AbstractScreen {
         takeScreenshot();
 
         submitSignUpButton.click();
-
     }
 
     public boolean wrongEmailAlertPresent() {
@@ -50,6 +51,14 @@ public class SignUpScreen extends AbstractScreen {
         takeScreenshot();
 
         return wrongEmailText.contains(expectedWrongEmailText);
+    }
 
+    public boolean wrongPasswordAlertPresent() {
+
+        String wrongPasswordText = getAlertTitle();
+
+        takeScreenshot();
+
+        return wrongPasswordText.contains(expectedWrongPasswordText);
     }
 }
