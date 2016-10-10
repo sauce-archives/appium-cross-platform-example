@@ -2,7 +2,13 @@ package data;
 
 public enum User {
 
-    INVALID_USER(
+    INVALID_PASSWORD_USER(
+            "user",
+            "valid@email.com",
+            "pswd"
+    ),
+
+    INVALID_EMAIL_USER(
             "user",
             "invalid.email",
             "securepassword"
