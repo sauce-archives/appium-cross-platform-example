@@ -13,9 +13,16 @@ public class SignUpTest extends AbstractTest {
     @Test
     public void signUpWithInvalidEmailTest() {
         app.landingScreen().selectSignUp();
-        app.signUpScreen().signUpUser(User.INVALID_USER);
+        app.signUpScreen().signUpUser(User.INVALID_EMAIL_USER);
 
         assertTrue(app.signUpScreen().wrongEmailAlertPresent());
     }
 
+    @Test
+    public void signUpWithInvalidPasswordTest() {
+        app.landingScreen().selectSignUp();
+        app.signUpScreen().signUpUser(User.INVALID_PASSWORD_USER);
+
+        assertTrue(app.signUpScreen().wrongPasswordAlertPresent());
+    }
 }
