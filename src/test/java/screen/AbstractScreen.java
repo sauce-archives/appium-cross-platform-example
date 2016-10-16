@@ -1,6 +1,7 @@
 package screen;
 
 import io.appium.java_client.AppiumDriver;
+import io.appium.java_client.MobileElement;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
@@ -8,6 +9,8 @@ import io.appium.java_client.remote.HideKeyboardStrategy;
 import org.openqa.selenium.By;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.util.concurrent.TimeUnit;
 
@@ -45,12 +48,16 @@ public class AbstractScreen {
         driver.getScreenshotAs(OutputType.BASE64);
     }
 
+    public MobileElement findElementWithTimeOut(By by, int timeOutInSeconds) {
+        return (MobileElement) (new WebDriverWait(driver, timeOutInSeconds)).until(ExpectedConditions.presenceOfElementLocated(by));
+    }
+
     public String getAlertTitle() {
 
         if (isIOS()) {
-            return driver.findElement(By.xpath("//UIAAlert/UIAScrollView/UIAStaticText[1]")).getText();
+            return findElementWithTimeOut(By.xpath("//UIAAlert/UIAScrollView/UIAStaticText[1]"), 10).getText();
         } else {
-            return driver.findElement(By.id("android:id/alertTitle")).getText();
+            return findElementWithTimeOut(By.id("android:id/alertTitle"), 10).getText();
         }
 
     }
