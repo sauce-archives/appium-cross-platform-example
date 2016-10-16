@@ -7,8 +7,10 @@ This example illustrates how to structure a cross platform Appium test. It makes
 To run the tests on TestObject, you will need to specify the following environment variables:
 
 - `TESTOBJECT_API_KEY`: The API key for the project that you are testing
-- `PLATFORM`: Either Android or iOS
+- `TESTOBJECT_USERNAME`: Your TestObject username.
+- `TESTOBJECT_PASSWORD`: Your TestObject password.
+
 
 In addition, you also need to update the value for `testObjectSuiteId` in the `@TestObject` annotation of the test class.
 
-To run the tests locally, you will only need to specify the `PLATFORM` environment variable and set `testLocally` to `true` in the `@TestObject` annotation of the test class.
+To run the tests locally, you will only need to set `testLocally` to `true` in the `@TestObject` annotation of the test class.
