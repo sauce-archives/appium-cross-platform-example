@@ -24,6 +24,10 @@ public class AbstractTest {
                 .build();
 
         resultWatcher.setAppiumDriver(driver);
+        
+        System.out.println(this.driver.getCapabilities().getCapability("testobject_test_report_url"));
+		System.out.println(this.driver.getCapabilities().getCapability("testobject_test_live_view_url"));
+
 
         app = new Komoot(driver);
 
